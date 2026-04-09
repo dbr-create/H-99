@@ -1,5 +1,7 @@
 -- Q9, packing duplicates into sublists
 pack :: (Eq a) => [a] -> [[a]]
+pack [] = []
+pack (x : []) = [[x]]
 pack (x : xs) = packHelper (xs) x 0
 
 packHelper :: (Eq a) => [a] -> a -> Int -> [[a]]

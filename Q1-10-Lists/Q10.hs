@@ -1,6 +1,9 @@
 -- Q10, run length encoding for a list
 encode :: (Eq a) => [a] -> [(Integer, a)]
-encode (x : xs) = encodeHelper (xs) x 1
+encode [] = []
+encode (x : xs)
+  | xs == [] = [(1, x)]
+  | otherwise = encodeHelper (xs) x 1
 
 encodeHelper :: (Eq a) => [a] -> a -> Integer -> [(Integer, a)]
 encodeHelper (current : rest) last count
