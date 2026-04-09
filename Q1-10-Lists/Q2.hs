@@ -1,3 +1,4 @@
+-- Q2, getting the second to last element in a List
 secondToLast :: [a] -> a
 secondToLast (x : xs) = secondToLastHelper xs x
 
