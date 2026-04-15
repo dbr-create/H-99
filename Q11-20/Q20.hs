@@ -1,5 +1,5 @@
 -- Q20, removing an element at position k
--- While the use of nothing was not specified in the question I decided it was best to account for erroneous input
+-- While the use of Maybe Monad was not specified in the question I decided it was best to account for erroneous input
 
 removeAt :: Int -> [a] -> (Maybe a, [a])
 removeAt _ [] = (Nothing, [])
