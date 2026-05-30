@@ -32,6 +32,17 @@ myEqu _ _ = False
 
 data LogPred = And LogPred LogPred | Or LogPred LogPred | Nand LogPred LogPred | Nor LogPred LogPred | Xor LogPred LogPred | Impl LogPred LogPred | Equ LogPred LogPred | VarA | VarB
 
+table :: LogPred -> IO ()
+table statement = do
+  putStrLn ("True True " ++ boolToStr (tableHelper True True statement))
+  putStrLn ("True False " ++ boolToStr (tableHelper True False statement))
+  putStrLn ("False True " ++ boolToStr (tableHelper False True statement))
+  putStrLn ("False False " ++ boolToStr (tableHelper False False statement))
+
+boolToStr :: Bool -> String
+boolToStr True = "True"
+boolToStr False = "False"
+
 tableHelper :: Bool -> Bool -> LogPred -> Bool
 tableHelper varA varB (And bool1 bool2) = myAnd (tableHelper varA varB bool1) (tableHelper varA varB bool2)
 tableHelper varA varB (Or bool1 bool2) = myOr (tableHelper varA varB bool1) (tableHelper varA varB bool2)
